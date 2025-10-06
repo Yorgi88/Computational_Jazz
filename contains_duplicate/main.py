@@ -68,7 +68,9 @@ def contains_duplicates(nums):
     for num in nums:
         if num in count:
             return True
-        count[num] = 1
+        count[num] = num
+        print(count)
     return False
 print(contains_duplicates([1,2,3,4,1]))
+
 
