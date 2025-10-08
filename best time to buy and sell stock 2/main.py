@@ -24,11 +24,38 @@ Approach:
 track the min number: This will be the best buying opportunity. if you find a number lower, that will
 be the new minimum
 
-track the mac profit so far and update it accordingly in case:
+track the max profit so far and update it accordingly in case:
 
 
 
 """
+def best_buy(stocks):
+    if not stocks:
+        return 'Nil'
+    maxProfit = 0
+    minPrice = stocks[0]
+
+    for prices in stocks:
+        if prices < minPrice:
+            minPrice = prices
+        max_profit = prices - minPrice
+        maxProfit = max(maxProfit, max_profit)
+    return maxProfit if maxProfit > 0 else None
+print(best_buy([7,1,5,3,6,4]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # def best_buy(stocks:list):
 #     if not stocks:
@@ -71,25 +98,25 @@ track the mac profit so far and update it accordingly in case:
 
 
 
-def stock_market(stock_price:list)->int or float:
-    """base case"""
-    if len(stock_price) < 2:
-        return 'nil'
-    minimum_price = stock_price[0]
-    maximum_profit = 0
-
-    for i in stock_price[1:]:
-        current_price = i
-        if current_price < minimum_price:
-            minimum_price = current_price
-        get_max_profit = current_price - minimum_price
-        if get_max_profit > maximum_profit:
-            maximum_profit = get_max_profit
-    return maximum_profit
-
-
-result = stock_market([7,1,5,3,6,4])
-print(result)
+# def stock_market(stock_price:list)->int or float:
+#     """base case"""
+#     if len(stock_price) < 2:
+#         return 'nil'
+#     minimum_price = stock_price[0]
+#     maximum_profit = 0
+#
+#     for i in stock_price[1:]:
+#         current_price = i
+#         if current_price < minimum_price:
+#             minimum_price = current_price
+#         get_max_profit = current_price - minimum_price
+#         if get_max_profit > maximum_profit:
+#             maximum_profit = get_max_profit
+#     return maximum_profit
+#
+#
+# result = stock_market([7,1,5,3,6,4])
+# print(result)
 
 
 

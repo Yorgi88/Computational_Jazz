@@ -32,6 +32,21 @@ next we go to nums[i] = 2 so we multiply the numbers except 2 , 1x3x4 = 12 and s
 
 """Brute force approach"""
 
+def productOfArrayExceptSelf(nums:list):
+    if len(nums) < 3:
+        return 'Does not meet the standard'
+    n = len(nums)
+    result_array = [1] * n
+
+    for i in range(n):
+        product = 1
+        for j in range(n):
+            if i != j:
+                product *= nums[j]
+        result_array[i] = product
+    return result_array
+print(productOfArrayExceptSelf([1,2,3,4]))
+
 
 # def productExceptSelf_bruteForce(nums):
 #     n = len(nums)
@@ -101,21 +116,21 @@ the same goes for the rest
 """
 
 
-def product_of_array(nums:list):
-    """base case"""
-    if len(nums) < 3:
-        return f"cannot execute, this is nums: {nums}"
-    n = len(nums)
-    answer_list = [1] * n
-
-    for i in range(n):
-        product = 1
-        for j in range(n):
-            if i != j:
-                product *= nums[j]
-        answer_list[i] = product
-    return answer_list
-
-print(product_of_array([1,2,3,4,5,6,7,8,9]))
+# def product_of_array(nums:list):
+#     """base case"""
+#     if len(nums) < 3:
+#         return f"cannot execute, this is nums: {nums}"
+#     n = len(nums)
+#     answer_list = [1] * n
+#
+#     for i in range(n):
+#         product = 1
+#         for j in range(n):
+#             if i != j:
+#                 product *= nums[j]
+#         answer_list[i] = product
+#     return answer_list
+#
+# print(product_of_array([1,2,3,4,5,6,7,8,9]))
 
 
