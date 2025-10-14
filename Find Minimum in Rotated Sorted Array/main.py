@@ -33,20 +33,49 @@ inflection point, between 5 and 1
 
 
 """
-
-def findMinimum(nums:list):
-    if not len(nums):
+def findMin(nums:list):
+    if not nums:
         return 'Error'
     left, right = 0, len(nums)-1
+
     while left < right:
         mid = (left + right) // 2
         if nums[mid] > nums[left]:
             left = mid + 1
         else:
-            right = mid
-    return nums[left]
+            right = mid - 1
+    return f"Answer is {nums[left]}"
+print(findMin([3,4,5,1,2]))
 
-print(findMinimum([3,4,5,1,2]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def findMinimum(nums:list):
+#     if not len(nums):
+#         return 'Error'
+#     left, right = 0, len(nums)-1
+#     while left < right:
+#         mid = (left + right) // 2
+#         if nums[mid] > nums[left]:
+#             left = mid + 1
+#         else:
+#             right = mid
+#     return nums[left]
+#
+# print(findMinimum([3,4,5,1,2]))
 
 
 
