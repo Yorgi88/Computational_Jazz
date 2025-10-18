@@ -261,48 +261,92 @@ This method efficiently finds all unique triplets without checking every possibl
 
 """
 
-
-
-
-def threeSum(nums:list):
+def threeSum(nums:list)->list or str or bool:
     if not nums or len(nums) < 3:
-        return 'Error'
+        return f"Error in {nums}"
 
+    """we make our lives easier by sorting the nums"""
     nums.sort()
-    res = list()
+    result = []
 
-    """initialize the for loop here"""
     for i in range(len(nums)):
-        """we need to check for duplicates first"""
-        if i > 0 and nums[i] == nums[i-1]:
+        """we check if the nums contains duplicates, if it does, move on to the next num"""
+        if i > 0 and nums[i] == nums[i - 1]:
             continue
 
-        """we define the variables here"""
         target = -nums[i]
         left = i + 1
         right = len(nums) - 1
 
         while left < right:
             currentSum = nums[left] + nums[right]
-
             if currentSum == target:
-                res.append([nums[i], nums[left], nums[right]])
-                """
-                here we need to find out if there are other matches, apart from the 
-                res, so we need to check if there are actually duplicates, if there are, skip to the next
-                if its from the right side, go backwards
-                """
+                result.append([nums[i], nums[left], nums[right]])
+                """if we encounter dups"""
                 while left < right and nums[left] == nums[left + 1]:
                     left += 1
                 while left < right and nums[right] == nums[right - 1]:
                     right -= 1
-                """here we push the pointer forward"""
                 left += 1
                 right -= 1
             elif currentSum < target:
                 left += 1
             else:
                 right -= 1
-    return res
+    return result
 
 print(threeSum([-1,0,1,2,-1,-4]))
+
+
+
+
+
+
+
+
+
+
+
+
+# def threeSum(nums:list):
+#     if not nums or len(nums) < 3:
+#         return 'Error'
+#
+#     nums.sort()
+#     res = list()
+#
+#     """initialize the for loop here"""
+#     for i in range(len(nums)):
+#         """we need to check for duplicates first"""
+#         if i > 0 and nums[i] == nums[i-1]:
+#             continue
+#
+#         """we define the variables here"""
+#         target = -nums[i]
+#         left = i + 1
+#         right = len(nums) - 1
+#
+#         while left < right:
+#             currentSum = nums[left] + nums[right]
+#
+#             if currentSum == target:
+#                 res.append([nums[i], nums[left], nums[right]])
+#                 """
+#                 here we need to find out if there are other matches, apart from the
+#                 res, so we need to check if there are actually duplicates, if there are, skip to the next
+#                 if its from the right side, go backwards
+#                 """
+#                 while left < right and nums[left] == nums[left + 1]:
+#                     left += 1
+#                 while left < right and nums[right] == nums[right - 1]:
+#                     right -= 1
+#                 """here we push the pointer forward"""
+#                 left += 1
+#                 right -= 1
+#             elif currentSum < target:
+#                 left += 1
+#             else:
+#                 right -= 1
+#     return res
+#
+# print(threeSum([-1,0,1,2,-1,-4]))
